@@ -1,0 +1,16 @@
+{
+    "name": "app/inventory-management",
+    "description": "Inventory Management System",
+    "type": "project",
+    "require": {
+        "php": "^8.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    },
+    "config": {
+        "optimize-autoloader": true
+    }
+}
