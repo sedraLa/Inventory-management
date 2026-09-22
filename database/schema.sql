@@ -1,5 +1,4 @@
-```sql
-CREATE TABLE products (
+CREATE TABLE IF NOT EXISTS products (
     id INT UNSIGNED NOT NULL AUTO_INCREMENT,
     name VARCHAR(150) NOT NULL,
     sku VARCHAR(50) NOT NULL,
@@ -9,7 +8,7 @@ CREATE TABLE products (
     UNIQUE (sku)
 );
 
-CREATE TABLE suppliers (
+CREATE TABLE IF NOT EXISTS suppliers (
     id INT UNSIGNED NOT NULL AUTO_INCREMENT,
     name VARCHAR(150) NOT NULL,
     phone VARCHAR(30),
@@ -18,7 +17,7 @@ CREATE TABLE suppliers (
     PRIMARY KEY (id)
 );
 
-CREATE TABLE product_suppliers (
+CREATE TABLE IF NOT EXISTS product_suppliers (
     id INT UNSIGNED NOT NULL AUTO_INCREMENT,
     product_id INT UNSIGNED NOT NULL,
     supplier_id INT UNSIGNED NOT NULL,
@@ -33,7 +32,7 @@ CREATE TABLE product_suppliers (
     CHECK (price > 0)
 );
 
-CREATE TABLE inventory_movements (
+CREATE TABLE IF NOT EXISTS inventory_movements (
     id INT UNSIGNED NOT NULL AUTO_INCREMENT,
     product_id INT UNSIGNED NOT NULL,
     type ENUM('IN', 'OUT') NOT NULL,
@@ -47,14 +46,14 @@ CREATE TABLE inventory_movements (
     CHECK (quantity > 0)
 );
 
-CREATE TABLE sales (
+CREATE TABLE IF NOT EXISTS sales (
     id INT UNSIGNED NOT NULL AUTO_INCREMENT,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 
     PRIMARY KEY (id)
 );
 
-CREATE TABLE sale_items (
+CREATE TABLE IF NOT EXISTS sale_items (
     id INT UNSIGNED NOT NULL AUTO_INCREMENT,
     sale_id INT UNSIGNED NOT NULL,
     product_id INT UNSIGNED NOT NULL,
@@ -69,4 +68,3 @@ CREATE TABLE sale_items (
     CHECK (quantity > 0),
     CHECK (unit_price > 0)
 );
-```
